@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f88b3580-e7ad-429d-8b4d-2637ff6abfb8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLPoblacioDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLRegistreDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLViaClassicaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLViaEsportivaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLViaGelDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Poblacio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Registre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/ViaClassica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/ViaEsportiva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/ViaGel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/interfaceDAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/interfaceDAO/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscaladorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscaladorDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscolaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscolaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLSectorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLSectorDAO.java" afterDir="false" />
@@ -17,7 +25,6 @@
       <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Escola.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Escola.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Sector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Sector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Via.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Via.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/vista/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/vista/Vista.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +58,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2uuMCShVOLWtmLs4Yu3ADztBtwf" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,6 +70,7 @@
     "Application.ProvaMenu.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "ToolWindow.GitHub Copilot Chat.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/Usuario/IdeaProjects/PillamLtd.Co/src/Main.java"

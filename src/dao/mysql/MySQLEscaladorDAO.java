@@ -1,7 +1,7 @@
 package dao.mysql;
 
 import dao.interfaceDAO.DAO;
-import model.objectes.Escalador;
+import model.Escalador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,23 +11,18 @@ import java.sql.SQLException;
 public class MySQLEscaladorDAO implements DAO<Escalador, Integer> {
     private Connection connection;
 
-    public MySQLEscaladorDAO(Connection connection) {
-        this.connection = connection;
-    }
-
     @Override
     public void createTable(Escalador escalador) {
-        String sql = "INSERT INTO Escalador (id, nom, alies, edat, nivell, nomDeLaVia, estilPreferit, historial, fita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Escalador (id, nom, alies, edat, nivell, nomDeLaVia, estilPreferit, fita) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, escalador.getId());
+            stmt.setInt(1, escalador.getIdEscalador());
             stmt.setString(2, escalador.getNom());
             stmt.setString(3, escalador.getAlies());
             stmt.setInt(4, escalador.getEdat());
-            stmt.setString(5, escalador.getNivell());
-            stmt.setString(6, escalador.getNomDeLaVia());
+            stmt.setString(5, escalador.getNivellMax());
+            stmt.setInt(6, escalador.getIdViaMax());
             stmt.setString(7, escalador.getEstilPreferit());
-            stmt.setString(8, escalador.getHistorial());
-            stmt.setString(9, escalador.getFita());
+            stmt.setString(8, escalador.getFita()) ;
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,18 +52,17 @@ public class MySQLEscaladorDAO implements DAO<Escalador, Integer> {
     }
 
     @Override
-    public void uptadeTable(Escalador escalador) {
-        String sql = "UPDATE Escalador SET nom = ?, alies = ?, edat = ?, nivell = ?, nomDeLaVia = ?, estilPreferit = ?, historial = ?, fita = ? WHERE id = ?";
+    public void updateTable(Escalador escalador) {
+        String sql = "UPDATE Escalador SET nom = ?, alies = ?, edat = ?, nivell = ?, nomDeLaVia = ?, estilPreferit = ?, fita = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, escalador.getId());
-            stmt.setString(2, escalador.getNom());
-            stmt.setString(3, escalador.getAlies());
-            stmt.setInt(4, escalador.getEdat());
-            stmt.setString(5, escalador.getNivell());
-            stmt.setString(6, escalador.getNomDeLaVia());
-            stmt.setString(7, escalador.getEstilPreferit());
-            stmt.setString(8, escalador.getHistorial());
-            stmt.setString(9, escalador.getFita());
+            stmt.setString(1, escalador.getNom());
+            stmt.setString(2, escalador.getAlies());
+            stmt.setInt(3, escalador.getEdat());
+            stmt.setString(4, escalador.getNivellMax());
+            stmt.setInt(5, escalador.getIdViaMax());
+            stmt.setString(6, escalador.getEstilPreferit());
+            stmt.setString(7, escalador.getFita());
+            stmt.setInt(8, escalador.getIdEscalador());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

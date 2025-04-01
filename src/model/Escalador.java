@@ -1,35 +1,32 @@
-package model.objectes;
+package model;
 
 public class Escalador {
-    private int id;
+    private int idEscalador;
     private String nom;
     private String alies;
     private int edat;
-    private String nivell;
-    private String nomDeLaVia;
+    private String nivellMax;
     private String estilPreferit;
-    private String historial; // ToDo
     private String fita;
+    private int idViaMax;
 
-    public Escalador(int id, String nom, String alies, int edat, String nivell, String nomDeLaVia, String estilPreferit, String historial, String fita) {
-        this.id= id;
+    public Escalador(int idEscalador, String nom, String alies, int edat, String nivellMax, String estilPreferit, String fita, int idViaMax) {
+        this.idEscalador = idEscalador;
         this.nom = nom;
         this.alies = alies;
         this.edat = edat;
-        this.nivell = nivell;
-        this.nomDeLaVia = nomDeLaVia;
+        this.nivellMax = nivellMax;
         this.estilPreferit = estilPreferit;
-        this.historial = historial;
         this.fita = fita;
+        this.idViaMax = idViaMax;
     }
 
-    // Getters i Setters
-    public int getId() {
-        return id;
+    public int getIdEscalador() {
+        return idEscalador;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEscalador(int idEscalador) {
+        this.idEscalador = idEscalador;
     }
 
     public String getNom() {
@@ -56,20 +53,12 @@ public class Escalador {
         this.edat = edat;
     }
 
-    public String getNivell() {
-        return nivell;
+    public String getNivellMax() {
+        return nivellMax;
     }
 
-    public void setNivell(String nivell) {
-        this.nivell = nivell;
-    }
-
-    public String getNomDeLaVia() {
-        return nomDeLaVia;
-    }
-
-    public void setNomDeLaVia(String nomDeLaVia) {
-        this.nomDeLaVia = nomDeLaVia;
+    public void setNivellMax(String nivellMax) {
+        this.nivellMax = nivellMax;
     }
 
     public String getEstilPreferit() {
@@ -80,19 +69,19 @@ public class Escalador {
         this.estilPreferit = estilPreferit;
     }
 
-    public String getHistorial() {
-        return historial;
-    }
-
-    public void setHistorial(String historial) {
-        this.historial = historial;
-    }
-
     public String getFita() {
         return fita;
     }
 
     public void setFita(String fita) {
         this.fita = fita;
+    }
+
+    public int getIdViaMax() {
+        return idViaMax;
+    }
+
+    public void setIdViaMax(int idViaMax) {
+        this.idViaMax = idViaMax;
     }
 }
