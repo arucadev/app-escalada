@@ -13,7 +13,7 @@ public class MySQLSectorDAO implements DAO<Sector, Integer> {
 
     @Override
     public void createTable(Sector sector) {
-        String sql = "INSERT INTO Sector (idSector, nom, coordenadesLat, coordenadesLong, aproximacio, popularitat, restriccions, idEscola) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO sectors (id_sector, nom, coordenades_lat, coordenades_long, aproximacio, popularitat, restriccions, id_escola) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, sector.getIdSector());
             stmt.setString(2, sector.getNom());
@@ -31,19 +31,19 @@ public class MySQLSectorDAO implements DAO<Sector, Integer> {
 
     @Override
     public void readTable(Integer id) {
-        String sql = "SELECT * FROM Sector WHERE idSector = ?";
+        String sql = "SELECT * FROM sectors WHERE id_sector = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Sector: " + rs.getInt("idSector"));
+                System.out.println("ID Sector: " + rs.getInt("id_sector"));
                 System.out.println("Nom: " + rs.getString("nom"));
-                System.out.println("Coordenades Lat: " + rs.getInt("coordenadesLat"));
-                System.out.println("Coordenades Long: " + rs.getInt("coordenadesLong"));
+                System.out.println("Coordenades Lat: " + rs.getInt("coordenades_lat"));
+                System.out.println("Coordenades Long: " + rs.getInt("coordenades_long"));
                 System.out.println("Aproximacio: " + rs.getString("aproximacio"));
                 System.out.println("Popularitat: " + rs.getInt("popularitat"));
                 System.out.println("Restriccions: " + rs.getString("restriccions"));
-                System.out.println("ID Escola: " + rs.getInt("idEscola"));
+                System.out.println("ID Escola: " + rs.getInt("id_escola"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class MySQLSectorDAO implements DAO<Sector, Integer> {
 
     @Override
     public void updateTable(Sector sector) {
-        String sql = "UPDATE Sector SET nom = ?, coordenadesLat = ?, coordenadesLong = ?, aproximacio = ?, popularitat = ?, restriccions = ?, idEscola = ? WHERE idSector = ?";
+        String sql = "UPDATE sectors SET nom = ?, coordenades_lat = ?, coordenades_long = ?, aproximacio = ?, popularitat = ?, restriccions = ?, id_escola = ? WHERE id_sector = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, sector.getNom());
             stmt.setInt(2, sector.getCoordenadesLat());
@@ -70,7 +70,7 @@ public class MySQLSectorDAO implements DAO<Sector, Integer> {
 
     @Override
     public void deleteTable(Integer id) {
-        String sql = "DELETE FROM Sector WHERE idSector = ?";
+        String sql = "DELETE FROM sectors WHERE id_sector = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();

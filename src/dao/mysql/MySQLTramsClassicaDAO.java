@@ -13,7 +13,7 @@ public class MySQLTramsClassicaDAO implements DAO<TramsClassica, Integer> {
 
     @Override
     public void createTable(TramsClassica tramsClassica) {
-        String sql = "INSERT INTO TramsClassica (idTramClassica, llarg, grauDificultat, idViaClassica) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO trams_classica (id_tram_classica, llargada, grau_dificultat, id_via_classica) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, tramsClassica.getIdTramClassica());
             stmt.setInt(2, tramsClassica.getLlarg());
@@ -27,15 +27,15 @@ public class MySQLTramsClassicaDAO implements DAO<TramsClassica, Integer> {
 
     @Override
     public void readTable(Integer id) {
-        String sql = "SELECT * FROM TramsClassica WHERE idTramClassica = ?";
+        String sql = "SELECT * FROM trams_classica WHERE id_tram_classica = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Tram Classica: " + rs.getInt("idTramClassica"));
-                System.out.println("Llarg: " + rs.getInt("llarg"));
-                System.out.println("Grau Dificultat: " + rs.getString("grauDificultat"));
-                System.out.println("ID Via Classica: " + rs.getInt("idViaClassica"));
+                System.out.println("ID Tram Classica: " + rs.getInt("id_tram_classica"));
+                System.out.println("Llarg: " + rs.getInt("llargada"));
+                System.out.println("Grau Dificultat: " + rs.getString("grau_dificultat"));
+                System.out.println("ID Via Classica: " + rs.getInt("id_via_classica"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class MySQLTramsClassicaDAO implements DAO<TramsClassica, Integer> {
 
     @Override
     public void updateTable(TramsClassica tramsClassica) {
-        String sql = "UPDATE TramsClassica SET llarg = ?, grauDificultat = ?, idViaClassica = ? WHERE idTramClassica = ?";
+        String sql = "UPDATE trams_classica SET llargada = ?, grau_dificultat = ?, id_via_classica = ? WHERE id_tram_classica = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, tramsClassica.getLlarg());
             stmt.setString(2, tramsClassica.getGrauDificultat());
@@ -58,7 +58,7 @@ public class MySQLTramsClassicaDAO implements DAO<TramsClassica, Integer> {
 
     @Override
     public void deleteTable(Integer id) {
-        String sql = "DELETE FROM TramsClassica WHERE idTramClassica = ?";
+        String sql = "DELETE FROM trams_classica WHERE id_tram_classica = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();

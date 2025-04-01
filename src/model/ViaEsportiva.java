@@ -2,14 +2,16 @@ package model;
 
 public class ViaEsportiva extends Via {
     private int idViaEsportiva;
+    private int llargadaTotal;
     private String ancoratgesPermesos;
     private String grauDificultat;
 
-    public ViaEsportiva(int idVia, String nom, String orientacio, String estat, String ancoratges, String tipusDeRoca, int idCreador, int idSector, int idViaEsportiva, String ancoratgesPermesos, String grauDificultat) {
+    public ViaEsportiva(int idVia, String nom, String orientacio, String estat, String ancoratges, String tipusDeRoca, int idCreador, int idSector, int idViaEsportiva, String ancoratgesPermesos, String grauDificultat, int llargadaTotal) {
         super(idVia, nom, orientacio, estat, ancoratges, tipusDeRoca, idCreador, idSector);
         this.idViaEsportiva = idViaEsportiva;
         this.ancoratgesPermesos = ancoratgesPermesos;
         this.grauDificultat = grauDificultat;
+        this.llargadaTotal = llargadaTotal;
     }
 
     public int getIdViaEsportiva() {
@@ -34,5 +36,13 @@ public class ViaEsportiva extends Via {
 
     public void setGrauDificultat(String grauDificultat) {
         this.grauDificultat = grauDificultat;
+    }
+
+    public int getLlargadaTotal() {
+        return llargadaTotal;
+    }
+
+    public void setLlargadaTotal(int llargadaTotal) {
+        this.llargadaTotal = llargadaTotal;
     }
 }

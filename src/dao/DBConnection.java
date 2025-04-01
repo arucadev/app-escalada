@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBConnection {
     /**
      * Connectar amb una BD indicada en el paràmetre 'url'.
-     * @param url Protocol i ruta cap a la BD<br>Exemple: "jdbc:sqlite:prova.db"
+     * @param url Protocol i ruta cap a la BD<br>Exemple: "jdbc:sqlite:C:\Users\Usuario\Desktop\DAW 1\PERSISTENCIA DE DADES\practicaApEscalada\vies_db1.db"
      * @return Connexió amb la BD o 'null' si no s'ha pogut connectar
      */
     private static Connection openCon(String url) {

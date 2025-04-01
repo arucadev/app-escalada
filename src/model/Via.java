@@ -1,6 +1,6 @@
 package model;
 
-public class Via {
+public abstract class Via {
     private int idVia;
     private String nom;
     private String orientacio;
@@ -22,11 +22,11 @@ public class Via {
     }
 
     // Getters and Setters for Via class
-    public int getId() {
+    public int getIdVia() {
         return idVia;
     }
 
-    public void setId(int id) {
+    public void setIdVia(int id) {
         this.idVia = id;
     }
 

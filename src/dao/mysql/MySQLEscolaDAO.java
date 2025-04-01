@@ -13,7 +13,7 @@ public class MySQLEscolaDAO implements DAO<Escola, Integer> {
 
     @Override
     public void createTable(Escola escola) {
-        String sql = "INSERT INTO Escola (idEscola, nom, aproximacio, numVies, popularitat, restriccions, idPoblacio) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO escoles (id_escola, nom, aproximacio, num_vies, popularitat, restriccions, id_poblacio) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, escola.getIdEscola());
             stmt.setString(2, escola.getNom());
@@ -30,18 +30,18 @@ public class MySQLEscolaDAO implements DAO<Escola, Integer> {
 
     @Override
     public void readTable(Integer id) {
-        String sql = "SELECT * FROM Escola WHERE idEscola = ?";
+        String sql = "SELECT * FROM escoles WHERE id_escola = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Escola: " + rs.getInt("idEscola"));
+                System.out.println("ID Escola: " + rs.getInt("id_escola"));
                 System.out.println("Nom: " + rs.getString("nom"));
                 System.out.println("Aproximacio: " + rs.getString("aproximacio"));
-                System.out.println("Num Vies: " + rs.getInt("numVies"));
+                System.out.println("Num Vies: " + rs.getInt("num_vies"));
                 System.out.println("Popularitat: " + rs.getString("popularitat"));
                 System.out.println("Restriccions: " + rs.getString("restriccions"));
-                System.out.println("ID Poblacio: " + rs.getInt("idPoblacio"));
+                System.out.println("ID Poblacio: " + rs.getInt("id_poblacio"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class MySQLEscolaDAO implements DAO<Escola, Integer> {
 
     @Override
     public void updateTable(Escola escola) {
-        String sql = "UPDATE Escola SET nom = ?, aproximacio = ?, numVies = ?, popularitat = ?, restriccions = ?, idPoblacio = ? WHERE idEscola = ?";
+        String sql = "UPDATE escoles SET nom = ?, aproximacio = ?, num_vies = ?, popularitat = ?, restriccions = ?, id_poblacio = ? WHERE id_escola = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, escola.getNom());
             stmt.setString(2, escola.getAproximacio());
@@ -67,7 +67,7 @@ public class MySQLEscolaDAO implements DAO<Escola, Integer> {
 
     @Override
     public void deleteTable(Integer id) {
-        String sql = "DELETE FROM Escola WHERE idEscola = ?";
+        String sql = "DELETE FROM escoles WHERE id_escola = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();

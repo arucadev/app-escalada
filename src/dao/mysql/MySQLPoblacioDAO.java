@@ -13,7 +13,7 @@ public class MySQLPoblacioDAO implements DAO<Poblacio, Integer> {
 
     @Override
     public void createTable(Poblacio poblacio) {
-        String sql = "INSERT INTO Poblacio (idPoblacio, nom) VALUES (?, ?)";
+        String sql = "INSERT INTO poblacions (id_poblacio, nom) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, poblacio.getIdPoblacio());
             stmt.setString(2, poblacio.getNom());
@@ -25,12 +25,12 @@ public class MySQLPoblacioDAO implements DAO<Poblacio, Integer> {
 
     @Override
     public void readTable(Integer id) {
-        String sql = "SELECT * FROM Poblacio WHERE idPoblacio = ?";
+        String sql = "SELECT * FROM poblacions WHERE id_poblacio = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Poblacio: " + rs.getInt("idPoblacio"));
+                System.out.println("ID Poblacio: " + rs.getInt("id_poblacio"));
                 System.out.println("Nom: " + rs.getString("nom"));
             }
         } catch (SQLException e) {
@@ -40,7 +40,7 @@ public class MySQLPoblacioDAO implements DAO<Poblacio, Integer> {
 
     @Override
     public void updateTable(Poblacio poblacio) {
-        String sql = "UPDATE Poblacio SET nom = ? WHERE idPoblacio = ?";
+        String sql = "UPDATE poblacions SET nom = ? WHERE id_poblacio = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, poblacio.getNom());
             stmt.setInt(2, poblacio.getIdPoblacio());
@@ -52,7 +52,7 @@ public class MySQLPoblacioDAO implements DAO<Poblacio, Integer> {
 
     @Override
     public void deleteTable(Integer id) {
-        String sql = "DELETE FROM Poblacio WHERE idPoblacio = ?";
+        String sql = "DELETE FROM poblacions WHERE id_poblacio = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();

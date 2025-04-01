@@ -13,13 +13,13 @@ public class MySQLRegistreDAO implements DAO<Registre, Integer> {
 
     @Override
     public void createTable(Registre registre) {
-        String sql = "INSERT INTO Registre (idRegistre, idEscalador, idVia, dataAscensio, estil) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO registres (id_registre, data_ascensio, estil, id_escalador, id_via) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, registre.getIdHistorial());
-            stmt.setInt(2, registre.getIdEscalador());
-            stmt.setInt(3, registre.getIdVia());
-            stmt.setString(4, registre.getDataAscensio());
-            stmt.setString(5, registre.getEstil());
+            stmt.setString(2, registre.getDataAscensio());
+            stmt.setString(3, registre.getEstil());
+            stmt.setInt(4, registre.getIdEscalador());
+            stmt.setInt(5, registre.getIdVia());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -28,16 +28,16 @@ public class MySQLRegistreDAO implements DAO<Registre, Integer> {
 
     @Override
     public void readTable(Integer id) {
-        String sql = "SELECT * FROM Registre WHERE idRegistre = ?";
+        String sql = "SELECT * FROM registres WHERE id_registre = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Registre: " + rs.getInt("idRegistre"));
-                System.out.println("ID Escalador: " + rs.getInt("idEscalador"));
-                System.out.println("ID Via: " + rs.getInt("idVia"));
-                System.out.println("Data Ascensio: " + rs.getString("dataAscensio"));
+                System.out.println("ID Registre: " + rs.getInt("id_registre"));
+                System.out.println("Data Ascensio: " + rs.getString("data_ascensio"));
                 System.out.println("Estil: " + rs.getString("estil"));
+                System.out.println("ID Escalador: " + rs.getInt("id_escalador"));
+                System.out.println("ID Via: " + rs.getInt("id_via"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,12 +46,12 @@ public class MySQLRegistreDAO implements DAO<Registre, Integer> {
 
     @Override
     public void updateTable(Registre registre) {
-        String sql = "UPDATE Registre SET idEscalador = ?, idVia = ?, dataAscensio = ?, estil = ? WHERE idRegistre = ?";
+        String sql = "UPDATE registres SET data_ascensio = ?, estil = ?, id_escalador = ?, id_via = ? WHERE id_registre = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, registre.getIdEscalador());
-            stmt.setInt(2, registre.getIdVia());
-            stmt.setString(3, registre.getDataAscensio());
-            stmt.setString(4, registre.getEstil());
+            stmt.setString(1, registre.getDataAscensio());
+            stmt.setString(2, registre.getEstil());
+            stmt.setInt(3, registre.getIdEscalador());
+            stmt.setInt(4, registre.getIdVia());
             stmt.setInt(5, registre.getIdHistorial());
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -61,7 +61,7 @@ public class MySQLRegistreDAO implements DAO<Registre, Integer> {
 
     @Override
     public void deleteTable(Integer id) {
-        String sql = "DELETE FROM Registre WHERE idRegistre = ?";
+        String sql = "DELETE FROM registres WHERE id_registre = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
