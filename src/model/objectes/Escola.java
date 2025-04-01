@@ -1,6 +1,7 @@
 package model.objectes;
 
 public class Escola {
+    private int id;
     private String nom;
     private String lloc;
     private int coordenades;
@@ -9,7 +10,8 @@ public class Escola {
     private String popularitat;
     private String restriccions;
 
-    public Escola(String nom, String lloc, int coordenades, String aproximacio, int numVies, String popularitat, String restriccions) {
+    public Escola(int id, String nom, String lloc, int coordenades, String aproximacio, int numVies, String popularitat, String restriccions) {
+        this.id = id;
         this.nom = nom;
         this.lloc = lloc;
         this.coordenades = coordenades;
@@ -20,7 +22,8 @@ public class Escola {
     }
 
     // Constructor sin 'lloc' para Sector
-    public Escola(String nom, int coordenades, String aproximacio, int numVies, String popularitat, String restriccions) {
+    public Escola(int id, String nom, int coordenades, String aproximacio, int numVies, String popularitat, String restriccions) {
+        this.id = id;
         this.nom = nom;
         this.coordenades = coordenades;
         this.aproximacio = aproximacio;
@@ -30,6 +33,14 @@ public class Escola {
     }
 
     // Getters i Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNom() {
         return nom;
     }

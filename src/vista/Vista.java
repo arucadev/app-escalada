@@ -22,7 +22,7 @@ public class Vista {
 
     public static void intro () {
         System.out.println("-----------------------------");
-        System.out.println("-----------BENVINGUT-----------");
+        System.out.println("----------BENVINGUT----------");
         System.out.println("-----------------------------");
 
     }

@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f88b3580-e7ad-429d-8b4d-2637ff6abfb8" name="Changes" comment="" />
+    <list default="true" id="f88b3580-e7ad-429d-8b4d-2637ff6abfb8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscaladorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscaladorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscolaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLEscolaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLSectorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLSectorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLViaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/dao/mysql/MySQLViaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Escalador.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Escalador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Escola.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Escola.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Sector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Sector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Via.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/model/objectes/Via.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PillamLtd.Co/src/vista/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PillamLtd.Co/src/vista/Vista.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,9 +32,24 @@
       </list>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../PillamLtd.Co" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ArnauAumedes&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/arucadev/app-escalada&quot;,
+    &quot;accountId&quot;: &quot;e8be326a-f26b-4967-8191-7b214cf016f1&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2uuMCShVOLWtmLs4Yu3ADztBtwf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,6 +59,8 @@
   "keyToString": {
     "Application.ProvaMenu.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/Usuario/IdeaProjects/PillamLtd.Co/src/Main.java"
   }
@@ -44,16 +75,5 @@
       <updated>1743093878053</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../PillamLtd.Co/src/Main.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

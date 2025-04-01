@@ -1,6 +1,7 @@
 package model.objectes;
 
 public class Via {
+    private int id;
     private String nom;
     private int Llargada;
     private String grauDificultat;
@@ -12,7 +13,8 @@ public class Via {
     private String tipusDeRoca;
     private String creadaPer;
 
-    public Via(String nom, int Llargada, String grauDificultat, String orientacio, String estat, String lloc, int coordendes, String ancoratges, String tipusDeRoca, String creadaPer) {
+    public Via(int id, String nom, int Llargada, String grauDificultat, String orientacio, String estat, String lloc, int coordendes, String ancoratges, String tipusDeRoca, String creadaPer) {
+        this.id = id;
         this.nom = nom;
         this.Llargada = Llargada;
         this.grauDificultat = grauDificultat;
@@ -26,6 +28,14 @@ public class Via {
     }
 
     // Getters and Setters for Via class
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNom() {
         return nom;
     }

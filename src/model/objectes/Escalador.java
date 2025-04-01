@@ -1,6 +1,7 @@
 package model.objectes;
 
 public class Escalador {
+    private int id;
     private String nom;
     private String alies;
     private int edat;
@@ -10,7 +11,8 @@ public class Escalador {
     private String historial; // ToDo
     private String fita;
 
-    public Escalador(String nom, String alies, int edat, String nivell, String nomDeLaVia, String estilPreferit, String historial, String fita) {
+    public Escalador(int id, String nom, String alies, int edat, String nivell, String nomDeLaVia, String estilPreferit, String historial, String fita) {
+        this.id= id;
         this.nom = nom;
         this.alies = alies;
         this.edat = edat;
@@ -22,6 +24,14 @@ public class Escalador {
     }
 
     // Getters i Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNom() {
         return nom;
     }
