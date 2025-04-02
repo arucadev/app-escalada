@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MySQLViaEsportivaDAO implements DAO<ViaEsportiva, Integer> {
+public class SQLiteViaEsportivaDAO implements DAO<ViaEsportiva, Integer> {
     private Connection connection;
 
     @Override

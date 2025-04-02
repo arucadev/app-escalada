@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MySQLEscaladorDAO implements DAO<Escalador, Integer> {
+public class SQLiteEscaladorDAO implements DAO<Escalador, Integer> {
     private Connection connection;
 
     @Override

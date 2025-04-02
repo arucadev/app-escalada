@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MySQLRegistreDAO implements DAO<Registre, Integer> {
+public class SQLiteRegistreDAO implements DAO<Registre, Integer> {
     private Connection connection;
 
     @Override
