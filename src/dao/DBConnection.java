@@ -10,7 +10,7 @@ public class DBConnection {
      * @param url Protocol i ruta cap a la BD<br>Exemple: "jdbc:sqlite:C:\Users\Usuario\Desktop\DAW 1\PERSISTENCIA DE DADES\practicaApEscalada\vies_db1.db"
      * @return Connexió amb la BD o 'null' si no s'ha pogut connectar
      */
-    private static Connection openCon(String url) {
+    public static Connection openCon(String url) {
         Connection con = null;
 
         try {
@@ -27,7 +27,7 @@ public class DBConnection {
      * Desconnectar d'una BD.
      * @param con Connexió amb la BD
      */
-    private static void closeCon(Connection con) {
+    public static void closeCon(Connection con) {
         try {
             if (con != null) con.close();
         } catch (SQLException e) {

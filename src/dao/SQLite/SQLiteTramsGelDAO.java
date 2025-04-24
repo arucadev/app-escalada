@@ -11,6 +11,10 @@ import java.sql.SQLException;
 public class SQLiteTramsGelDAO implements DAO<TramsGel, Integer> {
     private Connection connection;
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public void createTable(TramsGel tramsGel) {
         String sql = "INSERT INTO trams_gel (id_tram_gel, llargada, grau_dificultat, id_via_gel) VALUES (?, ?, ?, ?)";

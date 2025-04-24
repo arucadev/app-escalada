@@ -9,7 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SQLiteViaDAO implements DAO<Via, Integer> {
-    private Connection connection;
+    private static Connection connection;
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 
     @Override
     public void createTable(Via via) {
@@ -74,6 +78,55 @@ public class SQLiteViaDAO implements DAO<Via, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cercarViesPerDificultat (String difMax, String difMin) {
+        String sql = "SELECT * FROM vies v " +
+                    "INNER JOIN vies_classica vc ON vc.id_via = v.id_via" +
+                    "INNER JOIN vies_esportiva ve ON ve.id_via = v.id_via" +
+                    "INNER JOIN vies_gel vg ON vg.id_via = v.id_via" +
+                    "INNER JOIN trams_classica tc ON tc.id_via_classica = vc.id_via_classica" +
+                    "INNER JOIN trams_gel tg ON tg.id_via_gel = vg.id_via_gel" +
+                    "WHERE tc.grau_dificultat BETWEEN ? AND ?" +
+                    "OR tg.grau_dificultat BETWEEN ? AND ?" +
+                    "OR ve.grau_dificultat BETWEEN ? AND ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, difMin);
+            stmt.setString(2, difMax);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Via: " + rs.getInt("id_via"));
+                System.out.println("Nom: " + rs.getString("nom"));
+                System.out.println("Estat: " + rs.getString("estat"));
+                System.out.println("Orientacio: " + rs.getString("orientacio"));
+                System.out.println("Ancoratges: " + rs.getString("ancoratges"));
+                System.out.println("Tipus De Roca: " + rs.getString("tipus_de_roca"));
+                System.out.println("ID Creador: " + rs.getInt("id_creador"));
+                System.out.println("ID Sector: " + rs.getInt("id_sector"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void cercarViesPerEstat (String estat) {
+        String sql = "SELECT * FROM vies WHERE estat = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, estat);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Via: " + rs.getInt("id_via"));
+                System.out.println("Nom: " + rs.getString("nom"));
+                System.out.println("Estat: " + rs.getString("estat"));
+                System.out.println("Orientacio: " + rs.getString("orientacio"));
+                System.out.println("Ancoratges: " + rs.getString("ancoratges"));
+                System.out.println("Tipus De Roca: " + rs.getString("tipus_de_roca"));
+                System.out.println("ID Creador: " + rs.getInt("id_creador"));
+                System.out.println("ID Sector: " + rs.getInt("id_sector"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

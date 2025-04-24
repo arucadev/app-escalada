@@ -11,6 +11,10 @@ import java.sql.SQLException;
 public class SQLiteSectorDAO implements DAO<Sector, Integer> {
     private Connection connection;
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public void createTable(Sector sector) {
         String sql = "INSERT INTO sectors (id_sector, nom, coordenades_lat, coordenades_long, aproximacio, popularitat, restriccions, id_escola) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

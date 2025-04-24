@@ -11,6 +11,10 @@ import java.sql.SQLException;
 public class SQLiteEscolaDAO implements DAO<Escola, Integer> {
     private Connection connection;
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public void createTable(Escola escola) {
         String sql = "INSERT INTO escoles (id_escola, nom, aproximacio, num_vies, popularitat, restriccions, id_poblacio) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -71,6 +75,24 @@ public class SQLiteEscolaDAO implements DAO<Escola, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostrarViesDisponibles(Integer id) {
+        String sql = "SELECT v.id_sector, v.id_via, v.nom FROM escoles e" +
+                " JOIN sectors s ON s.id_escola = e.id_escola" +
+                " JOIN vies v ON v.id_sector = s.id_sector" +
+                " WHERE v.estat = 'Apte' AND e.id_escola = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                System.out.println("ID Sector: " + rs.getInt("id_sector"));
+                System.out.println("ID Via: " + rs.getInt("id_via"));
+                System.out.println("Nom Via: " + rs.getString("nom"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -11,6 +11,10 @@ import java.sql.SQLException;
 public class SQLiteEscaladorDAO implements DAO<Escalador, Integer> {
     private Connection connection;
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public void createTable(Escalador escalador) {
         String sql = "INSERT INTO escaladors (id_escalador, nom, alias, edat, nivell_max, estil_preferit, fita, id_via_max) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
