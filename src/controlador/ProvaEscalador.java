@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ProvaEscalador {
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        String url = "jdbc:sqlite:C:\\Users\\Usuario\\Desktop\\DAW 1\\PERSISTENCIA DE DADES\\practicaApEscalada\\vies_db1.db";
+        String url = "jdbc:sqlite:..\\..\\db\\vies_db2.db";
         Connection connection = null;
 
         try {

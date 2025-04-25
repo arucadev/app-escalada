@@ -8,18 +8,21 @@ import dao.mysql.*;
 import java.sql.Connection;
 import java.util.Scanner;
 
-public class ProvaMenu {
+public class Prova1 {
     private static final String url = "jdbc:sqlite:..\\..\\db\\vies_db2.db";
+
     public static void main(String[] args) {
+        String url = "jdbc:sqlite:..\\..\\db\\vies_db2.db";
         Connection connection = null;
 
         try {
-            connection = DBConnection.openCon(URL);
+            // Open connection
+            connection = DBConnection.openCon(url);
             SQLiteEscaladorDAO escaladorDAO = new SQLiteEscaladorDAO();
-            escaladorDAO.readTable(1); // Replace 1 with the ID you want to read
-        } finally {
-            DBConnection.closeCon(connection);
-        }
+            escaladorDAO.setConnection(connection);
 
-    }
+            int option;
+            do {
+                // Display menu
+                vista.menuPrincipal();
 }
