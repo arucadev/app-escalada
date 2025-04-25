@@ -16,7 +16,7 @@ public class SQLiteViaDAO implements DAO<Via, Integer> {
     }
 
     @Override
-    public void createTable(Via via) {
+    public void insertTable(Via via) {
         String sql = "INSERT INTO vies (id_via, nom, orientacio, estat, ancoratges, tipus_de_roca, id_creador, id_sector) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, via.getIdVia());

@@ -16,7 +16,7 @@ public class SQLiteEscaladorDAO implements DAO<Escalador, Integer> {
     }
 
     @Override
-    public void createTable(Escalador escalador) {
+    public void insertTable(Escalador escalador) {
         String sql = "INSERT INTO escaladors (id_escalador, nom, alias, edat, nivell_max, estil_preferit, fita, id_via_max) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, escalador.getIdEscalador());

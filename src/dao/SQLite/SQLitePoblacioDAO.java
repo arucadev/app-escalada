@@ -16,7 +16,7 @@ public class SQLitePoblacioDAO implements DAO<Poblacio, Integer> {
     }
 
     @Override
-    public void createTable(Poblacio poblacio) {
+    public void insertTable(Poblacio poblacio) {
         String sql = "INSERT INTO poblacions (id_poblacio, nom) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, poblacio.getIdPoblacio());

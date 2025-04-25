@@ -16,7 +16,7 @@ public class SQLiteEscolaDAO implements DAO<Escola, Integer> {
     }
 
     @Override
-    public void createTable(Escola escola) {
+    public void insertTable(Escola escola) {
         String sql = "INSERT INTO escoles (id_escola, nom, aproximacio, num_vies, popularitat, restriccions, id_poblacio) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, escola.getIdEscola());

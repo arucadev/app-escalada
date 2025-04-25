@@ -16,7 +16,7 @@ public class SQLiteSectorDAO implements DAO<Sector, Integer> {
     }
 
     @Override
-    public void createTable(Sector sector) {
+    public void insertTable(Sector sector) {
         String sql = "INSERT INTO sectors (id_sector, nom, coordenades_lat, coordenades_long, aproximacio, popularitat, restriccions, id_escola) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, sector.getIdSector());

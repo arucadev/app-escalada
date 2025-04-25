@@ -16,7 +16,7 @@ public class SQLiteTramsClassicaDAO implements DAO<TramsClassica, Integer> {
     }
 
     @Override
-    public void createTable(TramsClassica tramsClassica) {
+    public void insertTable(TramsClassica tramsClassica) {
         String sql = "INSERT INTO trams_classica (id_tram_classica, llargada, grau_dificultat, id_via_classica) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, tramsClassica.getIdTramClassica());

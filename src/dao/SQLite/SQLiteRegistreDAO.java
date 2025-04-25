@@ -16,7 +16,7 @@ public class SQLiteRegistreDAO implements DAO<Registre, Integer> {
     }
 
     @Override
-    public void createTable(Registre registre) {
+    public void insertTable(Registre registre) {
         String sql = "INSERT INTO registres (id_registre, data_ascensio, estil, id_escalador, id_via) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, registre.getIdHistorial());

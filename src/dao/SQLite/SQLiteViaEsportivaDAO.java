@@ -16,7 +16,7 @@ public class SQLiteViaEsportivaDAO implements DAO<ViaEsportiva, Integer> {
     }
 
     @Override
-    public void createTable(ViaEsportiva viaEsportiva) {
+    public void insertTable(ViaEsportiva viaEsportiva) {
         String sql = "INSERT INTO vies_esportiva (id_via_esportiva, llargada_total, ancoratges_permesos, grau_dificultat, id_via) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, viaEsportiva.getIdViaEsportiva());
