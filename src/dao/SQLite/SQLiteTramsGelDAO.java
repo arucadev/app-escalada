@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.TramsGel;
@@ -66,6 +66,22 @@ public class SQLiteTramsGelDAO implements DAO<TramsGel, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readAll() {
+        String sql = "SELECT * FROM trams_gel";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Tram Gel: " + rs.getInt("id_tram_gel"));
+                System.out.println("Llarg: " + rs.getInt("llargada"));
+                System.out.println("Grau Dificultat: " + rs.getString("grau_dificultat"));
+                System.out.println("ID Via Gel: " + rs.getInt("id_via_gel"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

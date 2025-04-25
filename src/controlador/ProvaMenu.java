@@ -1,15 +1,15 @@
 package controlador;
 
 import dao.DBConnection;
-import dao.mysql.SQLiteEscaladorDAO;
+import dao.SQLite.SQLiteEscaladorDAO;
 import vista.Vista;
-import dao.mysql.*;
+import dao.SQLite.*;
 
 import java.sql.Connection;
 import java.util.Scanner;
 
 public class ProvaMenu {
-    private static final String url = "jdbc:sqlite:..\\..\\db\\vies_db2.db";
+    private static final String URL = "jdbc:sqlite:..\\..\\db\\vies_db2.db";
     public static void main(String[] args) {
         Connection connection = null;
 

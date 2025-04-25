@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.ViaClassica;
@@ -69,5 +69,10 @@ public class SQLiteViaClassicaDAO implements DAO<ViaClassica, Integer> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void readAll() {
+
     }
 }

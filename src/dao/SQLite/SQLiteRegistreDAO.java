@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.Registre;
@@ -69,6 +69,23 @@ public class SQLiteRegistreDAO implements DAO<Registre, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readAll() {
+        String sql = "SELECT * FROM registres";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Registre: " + rs.getInt("id_registre"));
+                System.out.println("Data Ascensio: " + rs.getString("data_ascensio"));
+                System.out.println("Estil: " + rs.getString("estil"));
+                System.out.println("ID Escalador: " + rs.getInt("id_escalador"));
+                System.out.println("ID Via: " + rs.getInt("id_via"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

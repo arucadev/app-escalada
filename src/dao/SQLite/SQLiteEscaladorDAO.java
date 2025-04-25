@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.Escalador;
@@ -78,6 +78,27 @@ public class SQLiteEscaladorDAO implements DAO<Escalador, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readAll() {
+        String sql = "SELECT * FROM escaladors";
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("id_escalador"));
+                System.out.println("Nom: " + rs.getString("nom"));
+                System.out.println("Alias: " + rs.getString("alias"));
+                System.out.println("Edat: " + rs.getInt("edat"));
+                System.out.println("Nivell Max: " + rs.getString("nivell_max"));
+                System.out.println("Estil Preferit: " + rs.getString("estil_preferit"));
+                System.out.println("Fita: " + rs.getString("fita"));
+                System.out.println("ID Via Max: " + rs.getInt("id_via_max"));
+                System.out.println("----------------------------");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,14 +1,17 @@
 ### IntelliJ IDEA ###
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+!*/src/main/*/out/
+!*/src/test/*/out/
 .idea/vcs.xml
 .idea/workspace.xml
 ../.idea/.name
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
+.idea/
 app-escalada.iml
+PillamLtd.Co..iml
+
 
 
 ### Eclipse ###
@@ -20,8 +23,8 @@ app-escalada.iml
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+!*/src/main/*/bin/
+!*/src/test/*/bin/
 
 ### NetBeans ###
 /nbproject/private/

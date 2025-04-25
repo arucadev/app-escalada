@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.Sector;
@@ -78,6 +78,26 @@ public class SQLiteSectorDAO implements DAO<Sector, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readAll() {
+        String sql = "SELECT * FROM sectors";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Sector: " + rs.getInt("id_sector"));
+                System.out.println("Nom: " + rs.getString("nom"));
+                System.out.println("Coordenades Lat: " + rs.getInt("coordenades_lat"));
+                System.out.println("Coordenades Long: " + rs.getInt("coordenades_long"));
+                System.out.println("Aproximacio: " + rs.getString("aproximacio"));
+                System.out.println("Popularitat: " + rs.getInt("popularitat"));
+                System.out.println("Restriccions: " + rs.getString("restriccions"));
+                System.out.println("ID Escola: " + rs.getInt("id_escola"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

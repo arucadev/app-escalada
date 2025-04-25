@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.Poblacio;
@@ -60,6 +60,20 @@ public class SQLitePoblacioDAO implements DAO<Poblacio, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readAll() {
+        String sql = "SELECT * FROM poblacions";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Poblacio: " + rs.getInt("id_poblacio"));
+                System.out.println("Nom: " + rs.getString("nom"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

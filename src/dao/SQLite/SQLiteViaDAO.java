@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.Via;
@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SQLiteViaDAO implements DAO<Via, Integer> {
-    private static Connection connection;
+    public static Connection connection;
 
     public void setConnection(Connection connection) {
         this.connection = connection;
@@ -78,6 +78,26 @@ public class SQLiteViaDAO implements DAO<Via, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readAll() {
+        String sql = "SELECT * FROM vies";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Via: " + rs.getInt("id_via"));
+                System.out.println("Nom: " + rs.getString("nom"));
+                System.out.println("Orientacio: " + rs.getString("orientacio"));
+                System.out.println("Estat: " + rs.getString("estat"));
+                System.out.println("Ancoratges: " + rs.getString("ancoratges"));
+                System.out.println("Tipus De Roca: " + rs.getString("tipus_de_roca"));
+                System.out.println("ID Creador: " + rs.getInt("id_creador"));
+                System.out.println("ID Sector: " + rs.getInt("id_sector"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

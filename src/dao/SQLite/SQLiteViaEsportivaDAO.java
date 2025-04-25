@@ -1,4 +1,4 @@
-package dao.mysql;
+package dao.SQLite;
 
 import dao.interfaceDAO.DAO;
 import model.ViaEsportiva;
@@ -69,6 +69,23 @@ public class SQLiteViaEsportivaDAO implements DAO<ViaEsportiva, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readAll() {
+        String sql = "SELECT * FROM vies_esportiva";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID Via Esportiva: " + rs.getInt("id_via_esportiva"));
+                System.out.println("Llargada Total: " + rs.getInt("llargada_total"));
+                System.out.println("Ancoratges Permesos: " + rs.getString("ancoratges_permesos"));
+                System.out.println("Grau Dificultat: " + rs.getString("grau_dificultat"));
+                System.out.println("ID Via: " + rs.getInt("id_via"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
