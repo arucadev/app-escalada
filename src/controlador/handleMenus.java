@@ -35,7 +35,7 @@ public class handleMenus {
                     handleMenuEliminar(vista, scan);
                     break;
                 case 0:
-                    System.out.println("Sortint...");
+                    System.out.println("Sortir...");
                     exit = true;
                     break;
                 default:
