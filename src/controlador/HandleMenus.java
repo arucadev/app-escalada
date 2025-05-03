@@ -1,12 +1,16 @@
 package controlador;
 
 import vista.Vista;
+import controladors.objectes.vies.CrearVia;
+import controladors.objectes.vies.EliminarVia;
+import controladors.objectes.vies.LlistarVia;
+import controladors.objectes.vies.ModificarVia;
 
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
-public class HandleMenus {
+public class handleMenus {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -81,13 +85,16 @@ public class HandleMenus {
             switch (option) {
                 case 1:
                     System.out.println("Crear Via Esportiva...");
+                    CrearVia.crearViaEsportiva();
                     break;
                 case 2:
                     System.out.println("Crear Via Clàssica...");
+                    CrearVia.crearViaClassica();
                     handleCrearTrams(scan);
                     break;
                 case 3:
                     System.out.println("Crear Via Gel...");
+                    CrearVia.crearViaGel();
                     handleCrearTrams(scan);
                     break;
                 case 0:
@@ -126,6 +133,7 @@ public class HandleMenus {
             switch (option) {
                 case 1:
                     System.out.println("Modificar Via...");
+                    handleModificarVia(vista, scan);
                     break;
                 case 2:
                     System.out.println("Modificar Escola...");
@@ -135,6 +143,34 @@ public class HandleMenus {
                     break;
                 case 4:
                     System.out.println("Modificar Escalador...");
+                    break;
+                case 0:
+                    System.out.println("Tornar enrere...");
+                    break;
+                default:
+                    System.out.println("Opció incorrecte. Introdueix una opció vàlida.");
+            }
+        } while (option != 0);
+    }
+
+    private static void handleModificarVia(Vista vista, Scanner scan) {
+        int option;
+        do {
+            vista.menuTipusVia(); // Reutilizando el menú de tipos de vía
+            System.out.print("Selecciona el tipus de via a modificar: ");
+            option = parseInt(scan.nextLine());
+            switch (option) {
+                case 1:
+                    System.out.println("Modificar Via Esportiva...");
+                    ModificarVia.modificarViaEsportiva();
+                    break;
+                case 2:
+                    System.out.println("Modificar Via Clàssica...");
+                    ModificarVia.modificarViaClassica();
+                    break;
+                case 3:
+                    System.out.println("Modificar Via Gel...");
+                    ModificarVia.modificarViaGel();
                     break;
                 case 0:
                     System.out.println("Tornar enrere...");
@@ -182,21 +218,27 @@ public class HandleMenus {
             switch (option) {
                 case 1:
                     System.out.println("Llistar totes les vies...");
+                    LlistarVia.llistarTotesLesVies();
                     break;
                 case 2:
                     System.out.println("Llistar vies d'una escola...");
+                    LlistarVia.llistarViesEscola();
                     break;
                 case 3:
                     System.out.println("Llistar vies per dificultat...");
+                    LlistarVia.llistarViesPerDificultat();
                     break;
                 case 4:
                     System.out.println("Llistar vies segons estat...");
+                    LlistarVia.llistarViesPerEstat();
                     break;
                 case 5:
                     System.out.println("Llistar vies que han passat a 'Apte' recentment...");
+                    LlistarVia.llistarViesAptesRecentment();
                     break;
                 case 6:
-                    System.out.println("Llistar vies més llargues d’una escola...");
+                    System.out.println("Llistar vies més llargues d'una escola...");
+                    LlistarVia.llistarViesMesLlargues();
                     break;
                 case 0:
                     System.out.println("Tornar enrere...");
@@ -216,6 +258,7 @@ public class HandleMenus {
             switch (option) {
                 case 1:
                     System.out.println("Eliminar Via...");
+                    handleEliminarVia(vista, scan);
                     break;
                 case 2:
                     System.out.println("Eliminar Escola...");
@@ -225,6 +268,34 @@ public class HandleMenus {
                     break;
                 case 4:
                     System.out.println("Eliminar Escalador...");
+                    break;
+                case 0:
+                    System.out.println("Tornar enrere...");
+                    break;
+                default:
+                    System.out.println("Opció incorrecte. Introdueix una opció vàlida.");
+            }
+        } while (option != 0);
+    }
+
+    private static void handleEliminarVia(Vista vista, Scanner scan) {
+        int option;
+        do {
+            vista.menuTipusVia(); // Reutilizando el menú de tipos de vía
+            System.out.print("Selecciona el tipus de via a eliminar: ");
+            option = parseInt(scan.nextLine());
+            switch (option) {
+                case 1:
+                    System.out.println("Eliminar Via Esportiva...");
+                    EliminarVia.eliminarViaEsportiva();
+                    break;
+                case 2:
+                    System.out.println("Eliminar Via Clàssica...");
+                    EliminarVia.eliminarViaClassica();
+                    break;
+                case 3:
+                    System.out.println("Eliminar Via Gel...");
+                    EliminarVia.eliminarViaGel();
                     break;
                 case 0:
                     System.out.println("Tornar enrere...");
