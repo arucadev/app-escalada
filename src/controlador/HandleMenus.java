@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
-public class handleMenus {
+public class HandleMenus {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
