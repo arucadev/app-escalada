@@ -37,14 +37,20 @@ public class SQLiteViaEsportivaDAO implements DAO<ViaEsportiva, Integer> {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Via Esportiva: " + rs.getInt("id_via_esportiva"));
-                System.out.println("Llargada Total: " + rs.getInt("llargada_total"));
-                System.out.println("Ancoratges Permesos: " + rs.getString("ancoratges_permesos"));
-                System.out.println("Grau Dificultat: " + rs.getString("grau_dificultat"));
-                System.out.println("ID Via: " + rs.getInt("id_via"));
+                System.out.printf("%-15s %-15s %-25s %-20s %-10s%n",
+                        "ID Via Esportiva", "Llargada Total", "Ancoratges Permesos", "Grau Dificultat", "ID Via");
+                System.out.println("-------------------------------------------------------------------------------");
+                System.out.printf("%-15d %-15d %-25s %-20s %-10d%n",
+                        rs.getInt("id_via_esportiva"),
+                        rs.getInt("llargada_total"),
+                        rs.getString("ancoratges_permesos"),
+                        rs.getString("grau_dificultat"),
+                        rs.getInt("id_via"));
+            } else {
+                System.out.println("La via esportiva amb ID " + id + " no existeix.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al llegir la via esportiva: " + e.getMessage());
         }
     }
 

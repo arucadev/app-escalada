@@ -34,11 +34,16 @@ public class SQLitePoblacioDAO implements DAO<Poblacio, Integer> {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Poblacio: " + rs.getInt("id_poblacio"));
-                System.out.println("Nom: " + rs.getString("nom"));
+                System.out.printf("%-5s %-20s%n", "ID", "Nom");
+                System.out.println("----------------------------");
+                System.out.printf("%-5d %-20s%n",
+                        rs.getInt("id_poblacio"),
+                        rs.getString("nom"));
+            } else {
+                System.out.println("La població amb ID " + id + " no existeix.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al llegir la població: " + e.getMessage());
         }
     }
 

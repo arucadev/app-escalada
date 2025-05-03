@@ -39,16 +39,18 @@ public class SQLiteEscolaDAO implements DAO<Escola, Integer> {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Escola: " + rs.getInt("id_escola"));
-                System.out.println("Nom: " + rs.getString("nom"));
-                System.out.println("Aproximacio: " + rs.getString("aproximacio"));
-                System.out.println("Num Vies: " + rs.getInt("num_vies"));
-                System.out.println("Popularitat: " + rs.getString("popularitat"));
-                System.out.println("Restriccions: " + rs.getString("restriccions"));
-                System.out.println("ID Poblacio: " + rs.getInt("id_poblacio"));
+                System.out.printf("%-5s %-20s %-15s %-10s%n", "ID", "Nom", "Adreça", "Telèfon");
+                System.out.println("----------------------------------------------------");
+                System.out.printf("%-5d %-20s %-15s %-10s%n",
+                        rs.getInt("id_escola"),
+                        rs.getString("nom"),
+                        rs.getString("adreca"),
+                        rs.getString("telefon"));
+            } else {
+                System.out.println("L'escola amb ID " + id + " no existeix.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al llegir l'escola: " + e.getMessage());
         }
     }
 
@@ -82,7 +84,22 @@ public class SQLiteEscolaDAO implements DAO<Escola, Integer> {
 
     @Override
     public void readAll() {
-
+        String sql = "SELECT * FROM escoles";
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                System.out.println("ID Escola: " + rs.getInt("id_escola"));
+                System.out.println("Nom: " + rs.getString("nom"));
+                System.out.println("Aproximacio: " + rs.getString("aproximacio"));
+                System.out.println("Num Vies: " + rs.getInt("numero de vies"));
+                System.out.println("Popularitat: " + rs.getString("popularitat"));
+                System.out.println("Restriccions: " + rs.getString("restriccions"));
+                System.out.println("ID Poblacio: " + rs.getInt("id_poblacio"));
+                System.out.println("----------------------------");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void mostrarViesDisponibles(Integer id) {

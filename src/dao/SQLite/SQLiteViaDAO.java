@@ -40,20 +40,25 @@ public class SQLiteViaDAO implements DAO<Via, Integer> {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Via: " + rs.getInt("id_via"));
-                System.out.println("Nom: " + rs.getString("nom"));
-                System.out.println("Orientacio: " + rs.getString("orientacio"));
-                System.out.println("Estat: " + rs.getString("estat"));
-                System.out.println("Ancoratges: " + rs.getString("ancoratges"));
-                System.out.println("Tipus De Roca: " + rs.getString("tipus_de_roca"));
-                System.out.println("ID Creador: " + rs.getInt("id_creador"));
-                System.out.println("ID Sector: " + rs.getInt("id_sector"));
+                System.out.printf("%-10s %-20s %-15s %-10s %-15s %-15s %-10s %-10s%n",
+                        "ID Via", "Nom", "Orientacio", "Estat", "Ancoratges", "Tipus De Roca", "ID Creador", "ID Sector");
+                System.out.println("---------------------------------------------------------------------------------------------");
+                System.out.printf("%-10d %-20s %-15s %-10s %-15s %-15s %-10d %-10d%n",
+                        rs.getInt("id_via"),
+                        rs.getString("nom"),
+                        rs.getString("orientacio"),
+                        rs.getString("estat"),
+                        rs.getString("ancoratges"),
+                        rs.getString("tipus_de_roca"),
+                        rs.getInt("id_creador"),
+                        rs.getInt("id_sector"));
+            } else {
+                System.out.println("La via amb ID " + id + " no existeix.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al llegir la via: " + e.getMessage());
         }
     }
-
     @Override
     public void updateTable(Via via) {
         String sql = "UPDATE vies SET nom = ?, orientacio = ?, estat = ?, ancoratges = ?, tipus_de_roca = ?, id_creador = ?, id_sector = ? WHERE id_via = ?";

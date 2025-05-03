@@ -37,14 +37,19 @@ public class SQLiteRegistreDAO implements DAO<Registre, Integer> {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID Registre: " + rs.getInt("id_registre"));
-                System.out.println("Data Ascensio: " + rs.getString("data_ascensio"));
-                System.out.println("Estil: " + rs.getString("estil"));
-                System.out.println("ID Escalador: " + rs.getInt("id_escalador"));
-                System.out.println("ID Via: " + rs.getInt("id_via"));
+                System.out.printf("%-10s %-20s %-15s %-15s %-10s%n", "ID", "Data Ascensio", "Estil", "ID Escalador", "ID Via");
+                System.out.println("---------------------------------------------------------------------");
+                System.out.printf("%-10d %-20s %-15s %-15d %-10d%n",
+                        rs.getInt("id_registre"),
+                        rs.getString("data_ascensio"),
+                        rs.getString("estil"),
+                        rs.getInt("id_escalador"),
+                        rs.getInt("id_via"));
+            } else {
+                System.out.println("El registre amb ID " + id + " no existeix.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al llegir el registre: " + e.getMessage());
         }
     }
 

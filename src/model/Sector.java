@@ -3,14 +3,14 @@ package model;
 public class Sector {
     private int idSector;
     private String nom;
-    private int coordenadesLat;
-    private int coordenadesLong;
+    private double coordenadesLat;
+    private double coordenadesLong;
     private String aproximacio;
-    private int popularitat;
+    private String popularitat;
     private String restriccions;
     private int idEscola;
 
-    public Sector(int idSector, String nom, int coordenadesLat, int coordenadesLong, String aproximacio, int popularitat, String restriccions, int idEscola) {
+    public Sector(int idSector, String nom, double coordenadesLat, double coordenadesLong, String aproximacio, String popularitat, String restriccions, int idEscola) {
         this.idSector = idSector;
         this.nom = nom;
         this.coordenadesLat = coordenadesLat;
@@ -37,7 +37,7 @@ public class Sector {
         this.nom = nom;
     }
 
-    public int getCoordenadesLat() {
+    public double getCoordenadesLat() {
         return coordenadesLat;
     }
 
@@ -45,7 +45,7 @@ public class Sector {
         this.coordenadesLat = coordenadesLat;
     }
 
-    public int getCoordenadesLong() {
+    public double getCoordenadesLong() {
         return coordenadesLong;
     }
 
@@ -61,11 +61,11 @@ public class Sector {
         this.aproximacio = aproximacio;
     }
 
-    public int getPopularitat() {
+    public String getPopularitat() {
         return popularitat;
     }
 
-    public void setPopularitat(int popularitat) {
+    public void setPopularitat(String popularitat) {
         this.popularitat = popularitat;
     }
 

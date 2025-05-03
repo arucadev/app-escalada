@@ -40,17 +40,23 @@ public class SQLiteEscaladorDAO implements DAO<Escalador, Integer> {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("ID: " + rs.getInt("id_escalador"));
-                System.out.println("Nom: " + rs.getString("nom"));
-                System.out.println("Alias: " + rs.getString("alias"));
-                System.out.println("Edat: " + rs.getInt("edat"));
-                System.out.println("Nivell Max: " + rs.getString("nivell_max"));
-                System.out.println("Estil Preferit: " + rs.getString("estil_preferit"));
-                System.out.println("Fita: " + rs.getString("fita"));
-                System.out.println("ID Via Max: " + rs.getInt("id_via_max"));
+                System.out.printf("%-5s %-20s %-15s %-5s %-10s %-15s %-10s %-10s%n",
+                        "ID", "Nom", "Alias", "Edat", "Nivell Max", "Estil Preferit", "Fita", "ID Via Max");
+                System.out.println("--------------------------------------------------------------------------------------------");
+                System.out.printf("%-5d %-20s %-15s %-5d %-10s %-15s %-10s %-10d%n",
+                        rs.getInt("id_escalador"),
+                        rs.getString("nom"),
+                        rs.getString("alias"),
+                        rs.getInt("edat"),
+                        rs.getString("nivell_max"),
+                        rs.getString("estil_preferit"),
+                        rs.getString("fita") == null ? "null" : rs.getString("fita"),
+                        rs.getInt("id_via_max"));
+            } else {
+                System.out.println("El escalador con ID " + id + " no existe.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al leer el escalador: " + e.getMessage());
         }
     }
 

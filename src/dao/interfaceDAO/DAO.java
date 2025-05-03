@@ -5,6 +5,5 @@ public interface DAO<T,k> {
     void readTable(k id);
     void updateTable(T t);
     void deleteTable(k id);
-
     void readAll();
 }
