@@ -409,18 +409,6 @@ public class HandleMenus {
                     System.out.println("Consultar escoles amb restriccions actives actualment");
                     escolaDAO.consultarEscolesAmbRestriccionsActives();
                     break;
-                case 5:
-                    System.out.println("Mostrar sectors amb més de X vies disponibles");
-                    break;
-                case 6:
-                    System.out.println("Mostrar escaladors amb el mateix nivell màxim assolit");
-                    break;
-                case 7:
-                    System.out.println("Mostrar les vies que han passat a \"Apte\" recentment");
-                    break;
-                case 8:
-                    System.out.println("Mostrar les vies més llargues d'una escola determinada");
-                    break;
                 case 0:
                     System.out.println("Tornar enrere...");
                     break;
