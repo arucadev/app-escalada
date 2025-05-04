@@ -96,7 +96,7 @@ public class AuxSector {
         return idEscola;
     }
 
-    private static boolean doesSectorExist(int idSector, Connection connection) {
+    public static boolean doesSectorExist(int idSector, Connection connection) {
         String sql = "SELECT COUNT(*) FROM sectors WHERE id_sector = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idSector);
@@ -110,7 +110,7 @@ public class AuxSector {
         return false;
     }
 
-    private static boolean doesEscolaExist(int idEscola, Connection connection) {
+    public static boolean doesEscolaExist(int idEscola, Connection connection) {
         String sql = "SELECT COUNT(*) FROM escoles WHERE id_escola = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idEscola);
@@ -129,14 +129,14 @@ public class AuxSector {
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                writer.write(String.format("%-5d %-20s %-15.6f %-15.6f %-15s %-10s %-15s %-10d%n",
+                writer.write(String.format("%-5d %-25s %-15.6f %-15.6f %-40s %-10s %-40s %-10d%n",
                         rs.getInt("id_sector"),
                         rs.getString("nom"),
                         rs.getDouble("coordenades_lat"),
                         rs.getDouble("coordenades_long"),
                         rs.getString("aproximacio"),
                         rs.getString("popularitat"),
-                        rs.getString("restriccions") == null ? "null" : rs.getString("restriccions"),
+                        rs.getString("restriccions"),
                         rs.getInt("id_escola")));
             }
         } catch (SQLException | IOException e) {

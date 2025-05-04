@@ -34,18 +34,22 @@ public class SQLiteEscolaDAO implements DAO<Escola, Integer> {
 
     @Override
     public void readTable(Integer id) {
-        String sql = "SELECT * FROM escoles WHERE id_escola = ?";
+        String sql = "SELECT id_escola, nom, aproximacio, num_vies, popularitat, restriccions, id_poblacio FROM escoles WHERE id_escola = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.printf("%-5s %-20s %-15s %-10s%n", "ID", "Nom", "Adreça", "Telèfon");
-                System.out.println("----------------------------------------------------");
-                System.out.printf("%-5d %-20s %-15s %-10s%n",
+                System.out.printf("%-5d %-20s %-40s %-10d %-15s %-30s %-10d%n",
+                        "ID", "Nom", "Aproximacio", "Num Vies", "Popularitat", "Restriccions", "ID Poblacio");
+                System.out.println("-----------------------------------------------------------------------------------");
+                System.out.printf("%-10d %-20s %-15s %-10d %-15s %-15s %-10d%n",
                         rs.getInt("id_escola"),
                         rs.getString("nom"),
-                        rs.getString("adreca"),
-                        rs.getString("telefon"));
+                        rs.getString("aproximacio"),
+                        rs.getInt("num_vies"),
+                        rs.getString("popularitat"),
+                        rs.getString("restriccions"),
+                        rs.getInt("id_poblacio"));
             } else {
                 System.out.println("L'escola amb ID " + id + " no existeix.");
             }

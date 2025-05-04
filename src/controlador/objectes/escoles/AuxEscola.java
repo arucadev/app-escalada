@@ -93,13 +93,13 @@ public class AuxEscola {
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                writer.write(String.format("%-5d %-20s %-15s %-5d %-10s %-15s %-10s %-10d%n",
+                writer.write(String.format("%-5d %-20s %-40s %-10d %-15s %-30s %-10d%n",
                         rs.getInt("id_escola"),
                         rs.getString("nom"),
                         rs.getString("aproximacio"),
                         rs.getInt("num_vies"),
                         rs.getString("popularitat"),
-                        rs.getString("restriccions") == null ? "null" : rs.getString("restriccions"),
+                        rs.getString("restriccions"),
                         rs.getInt("id_poblacio")));
             }
         } catch (SQLException | IOException e) {

@@ -6,6 +6,7 @@ public class Vista {
         System.out.println("2. Modificar");
         System.out.println("3. Llistar");
         System.out.println("4. Eliminar");
+        System.out.println("5. Llistar tot");
         System.out.println("0. Sortir");
     }
 
@@ -82,6 +83,15 @@ public class Vista {
         System.out.println("2. Escola");
         System.out.println("3. Sector");
         System.out.println("4. Escalador");
+        System.out.println("0. Tornar enrere");
+    }
+
+    public static void menuLlistarTot() {
+        System.out.println("Què vols llistar?");
+        System.out.println("1. Vies");
+        System.out.println("2. Escoles");
+        System.out.println("3. Sectors");
+        System.out.println("4. Escaladors");
         System.out.println("0. Tornar enrere");
     }
 

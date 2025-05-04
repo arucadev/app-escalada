@@ -1,0 +1,32 @@
+ID    Nom                  Alias           Edat  Nivell Max Estil Preferit  Fita       ID Via Max
+--------------------------------------------------------------------------------------------
+1     Marc Gómez           Thunder         28    6a+        esportiva       null       35        
+2     Anna Sánchez         Skywalker       32    7a         clàssica        null       12        
+3     Jordi Pérez          BoulderKing     25    6b         gel             null       75        
+4     Laura Martínez       Flash           30    6c         esportiva       null       40        
+5     Carlos Díaz          Rocky           27    5+         clàssica        null       20        
+6     Sofia Fernández      Blizzard        29    7a+        gel             null       80        
+7     David Ruiz           Hurricane       24    5          esportiva       null       36        
+8     Marta López          Viento          33    7b         clàssica        null       25        
+9     Antonio Pérez        Falcon          31    6a         gel             null       70        
+10    Lucía Rodríguez      Coyote          26    7a+        esportiva       null       45        
+11    Miguel Álvarez       Thunderbolt     23    6b         clàssica        null       15        
+12    Pablo García         Tornado         34    6c+        gel             null       78        
+13    Raquel Jiménez       Tigris          28    7b+        esportiva       null       59        
+14    Sergio Martín        Jaguar          29    6c         clàssica        null       28        
+15    María Pérez          Ocelot          32    5+         gel             null       63        
+16    Xavi Torres          Panther         25    6a+        esportiva       null       42        
+17    Carmen Díaz          Wolf            30    7a         clàssica        null       18        
+18    Victor Sánchez       Lion            27    5          gel             null       68        
+19    Sandra González      Eagle           26    7b         esportiva       null       33        
+20    Alberto Ruiz         Grizzly         28    7a+        clàssica        null       22        
+21    Patricia Martín      Cheetah         24    6b         gel             null       65        
+22    Javier Fernández     Bear            35    6c+        esportiva       null       54        
+23    Eva López            Cobra           33    7c         clàssica        null       10        
+24    Juan Carlos Jiménez  Panthera        28    6a         gel             null       66        
+25    Marta Sánchez        Feline          32    6b         esportiva       null       48        
+26    Pedro Rodríguez      King            26    5+         clàssica        null       17        
+27    Lidia García         Viper           29    7b+        gel             null       72        
+28    Raúl Torres          Tarantula       30    6c         esportiva       null       52        
+29    Elena Pérez          Serpent         23    7a         clàssica        null       13        
+30    Fernando Ruiz        Falconer        31    6b         gel             null       64        

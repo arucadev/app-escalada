@@ -21,29 +21,109 @@ public class ModificarEscalador {
     public void modificar() {
         try {
             System.out.println("--- Actualizar Escalador ---");
-            System.out.print("ID del escalador a actualizar: ");
-            int idActualizar = AuxEscalador.insertID(connection);
-            scanner.nextLine();
-            System.out.print("Nuevo Nombre: ");
-            String nuevoNombre = AuxEscalador.insertName();
-            System.out.print("Nuevo Alias: ");
-            String nuevoAlias = AuxEscalador.insertAlias();
-            System.out.print("Nueva Edad: ");
-            int nuevaEdad = AuxEscalador.insertAge();
-            System.out.print("Nuevo Nivel Máximo: ");
-            String nuevoNivelMax = AuxEscalador.insertNivellMaxim();
-            System.out.print("Nuevo Estilo Preferido: ");
-            String nuevoEstilo = AuxEscalador.insertEstilPreferit();
+
+            // Validate ID
+            int idActualizar;
+            while (true) {
+                try {
+                    System.out.print("ID del escalador a actualizar: ");
+                    idActualizar = AuxEscalador.insertID(connection);
+                    if (!AuxEscalador.doesEscaladorExist(idActualizar, connection)) {
+                        System.err.println("Error: El escalador no existe. Inténtalo de nuevo.");
+                    } else {
+                        break; // Exit loop if ID is valid and exists
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error: ID inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            scanner.nextLine(); // Clear buffer
+
+            // Validate Name
+            String nuevoNombre;
+            while (true) {
+                try {
+                    System.out.print("Nuevo Nombre: ");
+                    nuevoNombre = AuxEscalador.insertName();
+                    break; // Exit loop if valid
+                } catch (Exception e) {
+                    System.err.println("Error: Nombre inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            // Validate Alias
+            String nuevoAlias;
+            while (true) {
+                try {
+                    System.out.print("Nuevo Alias: ");
+                    nuevoAlias = AuxEscalador.insertAlias();
+                    break; // Exit loop if valid
+                } catch (Exception e) {
+                    System.err.println("Error: Alias inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            // Validate Age
+            int nuevaEdad;
+            while (true) {
+                try {
+                    System.out.print("Nueva Edad: ");
+                    nuevaEdad = AuxEscalador.insertAge();
+                    break; // Exit loop if valid
+                } catch (Exception e) {
+                    System.err.println("Error: Edad inválida. Inténtalo de nuevo.");
+                }
+            }
+
+            // Validate Nivel Máximo
+            String nuevoNivelMax;
+            while (true) {
+                try {
+                    System.out.print("Nuevo Nivel Máximo: ");
+                    nuevoNivelMax = AuxEscalador.insertNivellMaxim();
+                    break; // Exit loop if valid
+                } catch (Exception e) {
+                    System.err.println("Error: Nivel Máximo inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            // Validate Estilo Preferido
+            String nuevoEstilo;
+            while (true) {
+                try {
+                    System.out.print("Nuevo Estilo Preferido: ");
+                    nuevoEstilo = AuxEscalador.insertEstilPreferit();
+                    break; // Exit loop if valid
+                } catch (EstilPreferitException e) {
+                    System.err.println("Error: " + e.getMessage());
+                } catch (Exception e) {
+                    System.err.println("Error: Estilo Preferido inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            // Validate Fita
             System.out.print("Nueva Fita: ");
             String nuevaFita = scanner.nextLine();
-            System.out.print("Nuevo ID Via Máxima: ");
-            int nuevoIdViaMax = AuxEscalador.insertViaMax(connection);
 
+            // Validate ID Via Máxima
+            int nuevoIdViaMax;
+            while (true) {
+                try {
+                    System.out.print("Nuevo ID Via Máxima: ");
+                    nuevoIdViaMax = AuxEscalador.insertViaMax(connection);
+                    break; // Exit loop if valid
+                } catch (Exception e) {
+                    System.err.println("Error: ID Via Máxima inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            // Update Escalador
             Escalador escaladorActualizado = new Escalador(idActualizar, nuevoNombre, nuevoAlias, nuevaEdad, nuevoNivelMax, nuevoEstilo, nuevaFita, nuevoIdViaMax);
             escaladorDAO.updateTable(escaladorActualizado);
             System.out.println("Escalador actualizado con éxito.");
-        } catch (EstilPreferitException e) {
-            System.err.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error inesperado: " + e.getMessage());
         }
     }
 }

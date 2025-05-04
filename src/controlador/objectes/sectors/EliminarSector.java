@@ -4,39 +4,40 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
+import dao.SQLite.SQLiteSectorDAO;
 
 public class EliminarSector {
+    private final SQLiteSectorDAO sectorDAO;
     private final Connection connection;
 
-    public EliminarSector(Connection connection) {
+    public EliminarSector(SQLiteSectorDAO sectorDAO, Connection connection) {
+        this.sectorDAO = sectorDAO;
         this.connection = connection;
     }
 
     public void eliminar() {
-        Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("--- Eliminar Sector ---");
-            System.out.print("ID del sector a eliminar: ");
-            int idSector = Integer.parseInt(scanner.nextLine().trim());
 
-            if (!doesSectorExist(idSector)) {
-                System.err.println("Error: El sector amb aquest ID no existeix.");
-                return;
-            }
-
-            String sql = "DELETE FROM sectors WHERE id_sector = ?";
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setInt(1, idSector);
-                int rowsAffected = stmt.executeUpdate();
-                if (rowsAffected > 0) {
-                    System.out.println("Sector eliminat amb èxit.");
-                } else {
-                    System.err.println("Error: No s'ha pogut eliminar el sector.");
+            int idSector;
+            while (true) {
+                try {
+                    System.out.print("ID del sector a eliminar: ");
+                    idSector = Integer.parseInt(new java.util.Scanner(System.in).nextLine().trim());
+                    if (!AuxSector.doesSectorExist(idSector, connection)) {
+                        System.err.println("Error: El sector no existe. Inténtalo de nuevo.");
+                    } else {
+                        break;
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println("Error: ID inválido. Debe ser un número entero. Inténtalo de nuevo.");
+                } catch (Exception e) {
+                    System.err.println("Error inesperado: " + e.getMessage());
                 }
             }
-        } catch (NumberFormatException e) {
-            System.err.println("Error: L'ID ha de ser un número vàlid.");
-        } catch (SQLException e) {
+            sectorDAO.deleteTable(idSector);
+            System.out.println("Sector eliminado con éxito.");
+        } catch (Exception e) {
             System.err.println("Error al eliminar el sector: " + e.getMessage());
         }
     }

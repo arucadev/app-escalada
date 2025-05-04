@@ -19,16 +19,26 @@ public class EliminarEscola {
     public void eliminar() {
         try {
             System.out.println("--- Eliminar Escola ---");
-            System.out.print("ID de l'escola a eliminar: ");
-            int idEliminar = Integer.parseInt(scanner.nextLine());
-            if (!AuxEscola.doesEscolaExist(idEliminar, connection)) {
-                System.err.println("La escola no existe.");
-            } else {
-                escolaDAO.deleteTable(idEliminar);
-                System.out.println("Escola eliminado con éxito.");
+
+            int idEliminar;
+            while (true) {
+                try {
+                    System.out.print("ID de l'escola a eliminar: ");
+                    idEliminar = Integer.parseInt(scanner.nextLine().trim());
+                    if (!AuxEscola.doesEscolaExist(idEliminar, connection)) {
+                        System.err.println("Error: La escola no existe. Inténtalo de nuevo.");
+                    } else {
+                        break;
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println("Error: ID inválido. Debe ser un número entero. Inténtalo de nuevo.");
+                }
             }
+
+            escolaDAO.deleteTable(idEliminar);
+            System.out.println("Escola eliminada con éxito.");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error inesperado: " + e.getMessage());
         }
     }
 }

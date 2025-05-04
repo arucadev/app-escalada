@@ -149,7 +149,7 @@ public class AuxEscalador {
     }
 
     public static void readAllEscaladors(BufferedWriter writer, Connection connection) {
-        String sql = "SELECT id_escalador FROM escaladors";
+        String sql = "SELECT * FROM escaladors";
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

@@ -22,28 +22,92 @@ public class CrearEscalador {
     public void crear() {
         try {
             System.out.println("--- Insertar Escalador ---");
-            System.out.print("ID: ");
-            int id = AuxEscalador.insertID(connection);
-            System.out.print("Nombre: ");
-            String nombre = AuxEscalador.insertName();
-            System.out.print("Alias: ");
-            String alias = AuxEscalador.insertAlias();
-            System.out.print("Edad: ");
-            int edad = AuxEscalador.insertAge();
-            System.out.print("Nivel Máximo: ");
-            String nivelMax = AuxEscalador.insertNivellMaxim();
-            System.out.print("Estilo Preferido: ");
-            String estilo = AuxEscalador.insertEstilPreferit();
+
+            int id;
+            while (true) {
+                try {
+                    System.out.print("ID: ");
+                    id = AuxEscalador.insertID(connection);
+                    break; // Salir del bucle si la entrada es válida
+                } catch (Exception e) {
+                    System.err.println("Error: ID inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            String nombre;
+            while (true) {
+                try {
+                    System.out.print("Nombre: ");
+                    nombre = AuxEscalador.insertName();
+                    break;
+                } catch (Exception e) {
+                    System.err.println("Error: Nombre inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            String alias;
+            while (true) {
+                try {
+                    System.out.print("Alias: ");
+                    alias = AuxEscalador.insertAlias();
+                    break;
+                } catch (Exception e) {
+                    System.err.println("Error: Alias inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            int edad;
+            while (true) {
+                try {
+                    System.out.print("Edad: ");
+                    edad = AuxEscalador.insertAge();
+                    break;
+                } catch (Exception e) {
+                    System.err.println("Error: Edad inválida. Inténtalo de nuevo.");
+                }
+            }
+
+            String nivelMax;
+            while (true) {
+                try {
+                    System.out.print("Nivel Máximo: ");
+                    nivelMax = AuxEscalador.insertNivellMaxim();
+                    break;
+                } catch (Exception e) {
+                    System.err.println("Error: Nivel máximo inválido. Inténtalo de nuevo.");
+                }
+            }
+
+            String estilo;
+            while (true) {
+                try {
+                    System.out.print("Estilo Preferido: ");
+                    estilo = AuxEscalador.insertEstilPreferit();
+                    break;
+                } catch (EstilPreferitException e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
+            }
+
             System.out.print("Fita: ");
             String fita = scanner.nextLine();
-            System.out.print("ID Via Máxima: ");
-            int idViaMax = AuxEscalador.insertViaMax(connection);
+
+            int idViaMax;
+            while (true) {
+                try {
+                    System.out.print("ID Via Máxima: ");
+                    idViaMax = AuxEscalador.insertViaMax(connection);
+                    break;
+                } catch (Exception e) {
+                    System.err.println("Error: ID de la vía máxima inválido. Inténtalo de nuevo.");
+                }
+            }
 
             Escalador nuevoEscalador = new Escalador(id, nombre, alias, edad, nivelMax, estilo, fita, idViaMax);
             escaladorDAO.insertTable(nuevoEscalador);
             System.out.println("Escalador creado con éxito.");
-        } catch (EstilPreferitException e) {
-            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -55,7 +119,7 @@ public class CrearEscalador {
             escaladorDAO.setConnection(connection);
             CrearEscalador crearEscalador = new CrearEscalador(escaladorDAO, scanner, connection);
 
-            crearEscalador.crear(); // Llama al método para crear un nuevo escalador
+            crearEscalador.crear();
         } catch (Exception e) {
             e.printStackTrace();
         }
