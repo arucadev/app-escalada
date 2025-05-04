@@ -114,13 +114,53 @@ public class SQLiteEscolaDAO implements DAO<Escola, Integer> {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                System.out.println("ID Sector: " + rs.getInt("id_sector"));
-                System.out.println("ID Via: " + rs.getInt("id_via"));
-                System.out.println("Nom Via: " + rs.getString("nom"));
+            boolean hasResults = false;
+
+            // Encabezado de la tabla
+            System.out.printf("%-10s %-10s %-30s%n", "ID Sector", "ID Via", "Nom Via");
+            System.out.println("----------------------------------------------------");
+
+            while (rs.next()) {
+                hasResults = true;
+                // Filas de datos
+                System.out.printf("%-10d %-10d %-30s%n",
+                        rs.getInt("id_sector"),
+                        rs.getInt("id_via"),
+                        rs.getString("nom"));
+            }
+
+            if (!hasResults) {
+                System.out.println("No hi ha vies disponibles per a aquesta escola.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al obtenir les vies disponibles: " + e.getMessage());
+        }
+    }
+
+    public void consultarEscolesAmbRestriccionsActives() {
+        String sql = "SELECT id_escola, nom, restriccions FROM escoles WHERE restriccions != 'Cap restricció'";
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            // Print table header
+            System.out.printf("%-10s %-30s %-30s%n", "ID Escola", "Nom", "Restriccions");
+            System.out.println("-------------------------------------------------------------------");
+
+            boolean hasResults = false;
+            while (rs.next()) {
+                hasResults = true;
+                // Print each row
+                System.out.printf("%-10d %-30s %-30s%n",
+                        rs.getInt("id_escola"),
+                        rs.getString("nom"),
+                        rs.getString("restriccions"));
+            }
+
+            if (!hasResults) {
+                System.out.println("No hi ha escoles amb restriccions actives actualment.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al consultar escoles amb restriccions actives: " + e.getMessage());
         }
     }
 }

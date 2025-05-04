@@ -7,6 +7,7 @@ public class Vista {
         System.out.println("3. Llistar");
         System.out.println("4. Eliminar");
         System.out.println("5. Llistar tot");
+        System.out.println("6. Funcions especials");
         System.out.println("0. Sortir");
     }
 
@@ -93,6 +94,18 @@ public class Vista {
         System.out.println("3. Sectors");
         System.out.println("4. Escaladors");
         System.out.println("0. Tornar enrere");
+    }
+
+    public static void menuFuncionsEspecials() {
+        System.out.println("Quina funció especial vols executar?");
+        System.out.println("1. Mostra les vies d'una Escola que es trobaran disponibles");
+        System.out.println("2. Cercar vies per dificultat en un rang específic (via, grau, sector, escola)");
+        System.out.println("3. Cercar vies segons estat (Apte, Construcció, Tancada)");
+        System.out.println("4. Consultar escoles amb restriccions actives actualment");
+        System.out.println("5. Mostrar sectors amb més de X vies disponibles");
+        System.out.println("6. Mostrar escaladors amb el mateix nivell màxim assolit");
+        System.out.println("7. Mostrar les vies que han passat a Apte recentment");
+        System.out.println("8. Mostrar les vies més llargues d’una escola determinada");
     }
 
     public static void intro() {

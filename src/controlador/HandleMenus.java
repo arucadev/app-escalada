@@ -6,6 +6,7 @@ import controlador.objectes.sectors.*;
 import dao.SQLite.SQLiteEscaladorDAO;
 import dao.SQLite.SQLiteEscolaDAO;
 import dao.SQLite.SQLiteSectorDAO;
+import dao.SQLite.SQLiteViaDAO;
 import vista.Vista;
 
 import java.sql.Connection;
@@ -17,25 +18,26 @@ import static java.lang.Integer.parseInt;
 public class HandleMenus {
 
     public static void main(String[] args) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Usuario\\IdeaProjects\\PillamLtd.Co\\db\\vies_db1.db");
-             Scanner scan = new Scanner(System.in)) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Usuario\\IdeaProjects\\PillamLtd.Co\\db\\vies_db1.db"); Scanner scan = new Scanner(System.in)) {
 
             Vista vista = new Vista();
             SQLiteEscolaDAO escolaDAO = new SQLiteEscolaDAO();
             SQLiteSectorDAO sectorDAO = new SQLiteSectorDAO();
             SQLiteEscaladorDAO escaladorDAO = new SQLiteEscaladorDAO();
+            SQLiteViaDAO viaDAO = new SQLiteViaDAO();
 
             escolaDAO.setConnection(connection);
             sectorDAO.setConnection(connection);
             escaladorDAO.setConnection(connection);
+            viaDAO.setConnection(connection);
 
-            handleMenuPrincipal(vista, scan, escolaDAO, sectorDAO, escaladorDAO, connection);
+            handleMenuPrincipal(vista, scan, escolaDAO, sectorDAO, escaladorDAO, viaDAO, connection);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void handleMenuPrincipal(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, Connection connection) {
+    private static void handleMenuPrincipal(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, SQLiteViaDAO viaDAO, Connection connection) {
         int option;
         boolean exit = false;
         do {
@@ -44,19 +46,22 @@ public class HandleMenus {
             option = parseInt(scan.nextLine());
             switch (option) {
                 case 1:
-                    handleMenuCrear(vista, scan, escolaDAO, sectorDAO, escaladorDAO, connection);
+                    handleMenuCrear(vista, scan, escolaDAO, sectorDAO, escaladorDAO, viaDAO, connection);
                     break;
                 case 2:
-                    handleMenuModificar(vista, scan, escolaDAO, sectorDAO, escaladorDAO, connection);
+                    handleMenuModificar(vista, scan, escolaDAO, sectorDAO, escaladorDAO, viaDAO, connection);
                     break;
                 case 3:
-                    handleMenuLlistar(vista, scan, escolaDAO, sectorDAO, escaladorDAO, connection);
+                    handleMenuLlistar(vista, scan, escolaDAO, sectorDAO, escaladorDAO, viaDAO, connection);
                     break;
                 case 4:
-                    handleMenuEliminar(vista, scan, escolaDAO, sectorDAO, escaladorDAO, connection);
+                    handleMenuEliminar(vista, scan, escolaDAO, sectorDAO, escaladorDAO, viaDAO, connection);
                     break;
                 case 5:
-                    handleMenuLlistarTot(vista, scan, escolaDAO, sectorDAO, escaladorDAO, connection);
+                    handleMenuLlistarTot(vista, scan, escolaDAO, sectorDAO, escaladorDAO, viaDAO, connection);
+                    break;
+                case 6:
+                    handleMenuOpcionsEspecials(vista, scan, escolaDAO, sectorDAO, escaladorDAO, viaDAO, connection);
                     break;
                 case 0:
                     System.out.println("Sortir...");
@@ -68,7 +73,7 @@ public class HandleMenus {
         } while (!exit);
     }
 
-    private static void handleMenuCrear(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, Connection connection) {
+    private static void handleMenuCrear(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, SQLiteViaDAO viaDAO, Connection connection) {
         int option;
         do {
             vista.menuCrear();
@@ -99,7 +104,7 @@ public class HandleMenus {
         } while (option != 0);
     }
 
-    private static void handleMenuModificar(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, Connection connection) {
+    private static void handleMenuModificar(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, SQLiteViaDAO viaDAO, Connection connection) {
         int option;
         do {
             vista.menuModificar();
@@ -130,7 +135,7 @@ public class HandleMenus {
         } while (option != 0);
     }
 
-    private static void handleMenuLlistar(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, Connection connection) {
+    private static void handleMenuLlistar(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, SQLiteViaDAO viaDAO, Connection connection) {
         int option;
         do {
             vista.menuLlistar();
@@ -161,7 +166,7 @@ public class HandleMenus {
         } while (option != 0);
     }
 
-    private static void handleMenuEliminar(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, Connection connection) {
+    private static void handleMenuEliminar(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, SQLiteViaDAO viaDAO, Connection connection) {
         int option;
         do {
             vista.menuEliminar();
@@ -192,7 +197,7 @@ public class HandleMenus {
         } while (option != 0);
     }
 
-    public static void handleMenuLlistarTot (Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, Connection connection) {
+    public static void handleMenuLlistarTot(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, SQLiteViaDAO viaDAO, Connection connection) {
         int option;
         do {
             vista.menuLlistarTot();
@@ -213,6 +218,58 @@ public class HandleMenus {
                 case 4:
                     System.out.println("Llistar Escaladors...");
                     new LeerTodosEscaladores(escaladorDAO, connection).leerTodos();
+                    break;
+                case 0:
+                    System.out.println("Tornar enrere...");
+                    break;
+                default:
+                    System.out.println("Opció incorrecte. Introdueix una opció vàlida.");
+            }
+        } while (option != 0);
+    }
+
+    public static void handleMenuOpcionsEspecials(Vista vista, Scanner scan, SQLiteEscolaDAO escolaDAO, SQLiteSectorDAO sectorDAO, SQLiteEscaladorDAO escaladorDAO, SQLiteViaDAO viaDAO, Connection connection) {
+        int option;
+        do {
+            vista.menuFuncionsEspecials();
+            System.out.print("Selecciona una opció: ");
+            option = parseInt(scan.nextLine());
+            switch (option) {
+                case 1:
+                    System.out.println("Mostrant les vies disponibles d'una Escola");
+                    System.out.print("Introdueix l'ID de l'Escola: ");
+                    int idEscola = parseInt(scan.nextLine());
+                    escolaDAO.mostrarViesDisponibles(idEscola);
+                    break;
+                case 2:
+                    System.out.println("Cercar vies per dificultat en un rang específic:");
+                    System.out.print("Introdueix el grau mínim: ");
+                    String minGrau = scan.nextLine();
+                    System.out.print("Introdueix el grau màxim: ");
+                    String maxGrau = scan.nextLine();
+                    viaDAO.cercarViesPerDificultat(minGrau, maxGrau);
+                    break;
+                case 3:
+                    System.out.println("Cercar vies segons estat (Apte, Construcció, Tancada)");
+                    System.out.print("Introdueix l'estat: ");
+                    String estat = scan.nextLine();
+                    viaDAO.cercarViesPerEstat(estat);
+                    break;
+                case 4:
+                    System.out.println("Consultar escoles amb restriccions actives actualment");
+                    escolaDAO.consultarEscolesAmbRestriccionsActives();
+                    break;
+                case 5:
+                    System.out.println("Mostrar sectors amb més de X vies disponibles");
+                    break;
+                case 6:
+                    System.out.println("Mostrar escaladors amb el mateix nivell màxim assolit");
+                    break;
+                case 7:
+                    System.out.println("Mostrar les vies que han passat a \"Apte\" recentment");
+                    break;
+                case 8:
+                    System.out.println("Mostrar les vies més llargues d’una escola determinada");
                     break;
                 case 0:
                     System.out.println("Tornar enrere...");
